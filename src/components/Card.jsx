@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Slider from "react-slick";
 
 const ayurvedaProducts = [
@@ -114,14 +114,17 @@ const Card = () => {
               <h3 className="text-lg font-semibold">{product.name}</h3>
               <h3 className="text-gray-600">{product.description}</h3>
               <p className="text-green-600 font-bold mt-1">₹{product.price}</p>
-              <div className="flex justify-between mt-2 absolute bottom-5">
-                <button className="bg-black text-white px-3 py-1 border-2 rounded hover:bg-white hover:text-black" onClick={HandelCart}>
-                  Add to Cart
-                </button>
-                {/* Like Button */}
-                
-              </div>
+             
             </div>
+            <div className=" px-3 flex justify-between mt-2 absolute bottom-5">
+                <Link to={"/cart"} className="bg-black text-white px-3 py-1 border-2 rounded hover:bg-white hover:text-black" onClick={HandelCart}>
+                  Add to Cart
+                </Link>
+                
+                <Link to={"/order"} className="bg-black ml-5 text-white px-6 py-1 border-2 rounded hover:bg-white hover:text-black">
+                  Order
+                </Link>
+              </div>
           </div>
         ))}
       </Slider>

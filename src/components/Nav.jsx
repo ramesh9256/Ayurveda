@@ -9,9 +9,14 @@ import "react-toastify/dist/ReactToastify.css"; // Import styles
 const Nav = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [user, setUser] = useState(null);
+  const [cartCount, setCartCount] = useState(0);
   const navigate = useNavigate();
 
+  // Check localStorage for cart items
   useEffect(() => {
+    const cartItems = JSON.parse(localStorage.getItem("cart")) || [];
+    setCartCount(cartItems.length);
+
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
 
@@ -35,20 +40,38 @@ const Nav = () => {
     }
   };
 
+  // Handle adding to the cart
+  const handleAddToCart = (productId, productName) => {
+    const cartItems = JSON.parse(localStorage.getItem("cart")) || [];
+    const itemExists = cartItems.some((item) => item.id === productId);
+
+    if (!itemExists) {
+      cartItems.push({ id: productId, name: productName, quantity: 1 });
+      localStorage.setItem("cart", JSON.stringify(cartItems));
+      setCartCount(cartItems.length);
+      toast.success(`${productName} added to cart!`, { autoClose: 2000 });
+    } else {
+      toast.info(`${productName} is already in the cart.`, { autoClose: 2000 });
+    }
+  };
+
   return (
     <nav className="bg-green-50 shadow-lg fixed top-0 left-0 w-full z-50 py-3">
       <ToastContainer position="top-right" />
       <div className="container mx-auto flex items-center justify-between px-6">
         <Link to="/" className="flex items-center space-x-3">
-          <img src={Logo} alt="Logo" className="h-14 w-14 rounded-full shadow-md" />
+          <img src={Logo} alt="Logo" className="h-14 w-14 rounded-full" />
           <span className="text-2xl font-bold text-green-800">Ayurveda</span>
         </Link>
 
         {/* Desktop Navigation */}
-        <div className="hidden md:flex space-x-8">
+        <div className="hidden md:flex space-x-8 items-center">
           <Link to="/" className="text-green-700 hover:text-green-900 font-medium transition duration-300">Home</Link>
           <Link to="/about" className="text-green-700 hover:text-green-900 font-medium transition duration-300">About</Link>
           <Link to="/contact" className="text-green-700 hover:text-green-900 font-medium transition duration-300">Contact</Link>
+
+          {/* Add to Cart Button for Testing */}
+         
 
           {/* Conditional Login/Logout */}
           {user ? (
@@ -62,6 +85,11 @@ const Nav = () => {
               Login
             </Link>
           )}
+
+          {/* Cart Button with Count */}
+          <Link to="/cart" className="text-green-700 hover:text-green-900 font-medium transition duration-300">
+            Cart ({cartCount})
+          </Link>
         </div>
 
         {/* Mobile Menu Button */}
@@ -99,19 +127,26 @@ const Nav = () => {
               <Link to="/contact" className="text-green-700 hover:text-green-900 block py-2">Contact</Link>
             </li>
             <li>
+              {/* Conditional Login/Logout for mobile */}
               {user ? (
                 <button 
                   onClick={HandleSignOut} 
-                  className="text-white px-4 py-2 rounded block w-full text-center">
+                  className="text-white px-1 py-2 font-medium rounded">
                   Log out
                 </button>
               ) : (
                 <Link to="/Login">
-                  <button className="text-white px-4 py-2 rounded block w-full text-center">
+                  <button className="text-green-700 px-1 font-medium py-2 rounded">
                     Login
                   </button>
                 </Link>
               )}
+            </li>
+            <li>
+              {/* Cart Button in Mobile */}
+              <Link to="/cart" className="text-green-700 hover:text-green-900 block py-2">
+                Cart ({cartCount})
+              </Link>
             </li>
           </ul>
         </div>

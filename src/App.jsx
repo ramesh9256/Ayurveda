@@ -11,28 +11,34 @@ import ReadMore from "./components/ReadMore";
 import Login from "./components/Login";
 import Top from "./components/Top";
 import SignUp from "./components/SignUp";
+import AddToCart from "./components/AddToCart";
+import Order from "./components/Order";
 
 
 
 
 const App = () => {
-  
+
   return (
     <Router>
-      <Top/>
-      <Nav/>
+      <Top />
+      <Nav />
       <Routes>
-        <Route path="/" element = {<Body/>} />
+        <Route path="/" element={<Body />} />
         <Route path="/product/:id" element={<ProductDetail />} />
         <Route path="/CardProduct/:id" element={<CardProducts />} />
-        <Route path="/contact" element = {<Contact/>}/>
-        <Route path="/about" element = {<About/>}/>
-        <Route path="/review" element = {<ReadMore/>}/>
-        <Route path="/signup" element = {<SignUp/>}/>
-        <Route path="/login" element = {<Login/>}/>
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/review" element={<ReadMore />} />
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/cart" element={<AddToCart />} />
+        <Route path="/order" element={<Order />} />
+        <Route path="/confirm" element={<Body />} />
+
 
       </Routes>
-      <Footer/>
+      <Footer />
     </Router>
   );
 };
