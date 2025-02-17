@@ -27,7 +27,7 @@ const Nav = () => {
   const HandleSignOut = async () => {
     try {
       await signOut(auth);
-      toast.success("Successfully signed out!", { autoClose: 2000 }); // ✅ Success toast
+      toast.success("Successfully Log out!", { autoClose: 2000 }); // ✅ Success toast
       setTimeout(() => navigate("/"), 2000); // Redirect after toast
     } catch (error) {
       console.error("Sign-out error:", error);
