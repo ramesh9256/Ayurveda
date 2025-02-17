@@ -7,12 +7,12 @@ function OurStory() {
   
   const details = [
     {
-      img: "https://img.forestessentialsindia.com/pub/media/home/our-roots/Multi-Sensoria.jpg",
+      img: "https://ayuschool.com/wp-content/uploads/2023/11/learning-ayurveda-ayuschool.webp",
       title: "A MULTI-SENSORIAL JOURNEY",
       dec: "Authentic in its roots and sophisticated in its presentation, Forest Essentials takes you on an immersive multi-sensorial journey with every product."
     },
     {
-      img: "https://img.forestessentialsindia.com/pub/media/home/our-roots/Fresh-Pure-Potent.jpg",
+      img: "https://miro.medium.com/v2/resize:fit:1400/1*vVNEz-zO4lpgTwIU2dxfUQ.jpeg",
       title: "FRESH. PURE. POTENT",
       dec: "Forest Essentials' products are handcrafted using 100% natural ingredients, sourced from the vast Indian landscape, to ensure the highest standards of purity."
     },
@@ -41,7 +41,7 @@ function OurStory() {
           {details.map((item, index) => (
             <div key={index} className="p-4">
               <div className="bg-white shadow-lg rounded-lg overflow-hidden">
-                <img src={item.img} alt={item.title} className="w-full h-60 object-cover" />
+                <img src={item.img} alt={item.title} className="w-full h-70 object-cover" />
                 <div className="p-4 text-center">
                   <h3 className="text-xl font-semibold text-green-800">{item.title}</h3>
                   <p className="text-gray-700 mt-2">{item.dec}</p>
