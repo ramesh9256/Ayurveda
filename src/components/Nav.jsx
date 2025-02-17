@@ -55,7 +55,7 @@ const Nav = () => {
             <button 
               onClick={HandleSignOut} 
               className="text-green-700 font-medium rounded transition duration-300">
-              Sign Out
+              Log Out
             </button>
           ) : (
             <Link to="/Login" className="text-green-700 hover:text-green-900 font-medium transition duration-300">
@@ -103,7 +103,7 @@ const Nav = () => {
                 <button 
                   onClick={HandleSignOut} 
                   className="text-white px-4 py-2 rounded block w-full text-center">
-                  Sign Out
+                  Log out
                 </button>
               ) : (
                 <Link to="/Login">
