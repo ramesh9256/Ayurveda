@@ -110,18 +110,18 @@ const Card = () => {
               className="rounded-lg shadow-lg p-4 cursor-pointer hover:shadow-xl transition bg-white flex flex-col h-full"
               onClick={() => navigate(`/CardProduct/${product.id}`)}
             >
-              <img src={product.image} alt={product.name} className="w-full h-40 object-cover rounded mb-2" />
+              <img src={product.image} alt={product.name} className="w-full h-40 object-cover rounded-lg mb-2" />
               <h3 className="text-lg font-semibold">{product.name}</h3>
               <h3 className="text-gray-600">{product.description}</h3>
               <p className="text-green-600 font-bold mt-1">₹{product.price}</p>
              
             </div>
             <div className=" px-3 flex justify-between mt-2 absolute bottom-5">
-                <Link to={"/cart"} className="bg-black text-white px-3 py-1 border-2 rounded hover:bg-white hover:text-black" onClick={HandelCart}>
+                <Link to={"/cart"} className="bg-black font-medium text-white px-3 py-1 border-2 rounded hover:bg-white hover:text-black" onClick={HandelCart}>
                   Add to Cart
                 </Link>
                 
-                <Link to={"/order"} className="bg-black ml-5 text-white px-6 py-1 border-2 rounded hover:bg-white hover:text-black">
+                <Link to={"/order"} className="bg-black ml-5 font-medium text-white px-6 py-1 border-2 rounded hover:bg-white hover:text-black">
                   Order
                 </Link>
               </div>

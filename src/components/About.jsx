@@ -79,7 +79,7 @@ const About = () => {
           Start your journey towards a balanced and natural lifestyle today.
         </p>
         <button className="mt-4 bg-white text-green-600 px-6 py-2 font-semibold rounded hover:bg-green-800 hover:text-white transition">
-          Learn More
+        Explore Ayurvedic Products 🌿
         </button>
       </section>
     </div>
