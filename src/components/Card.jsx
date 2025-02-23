@@ -1,6 +1,8 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import Slider from "react-slick";
+import { addItem } from "../redux/cartSlice";
 
 const ayurvedaProducts = [
   {
@@ -10,6 +12,8 @@ const ayurvedaProducts = [
     rating: 4.8,
     image: "https://www.kerry.com/content/dam/kerry/en/images/insights/kerrydigest/2023/ashwaganha/bigstock-Ginseng-ashwagandha-herb-root-hero-76496183.jpg",
     description: "Boosts energy, reduces stress, and improves immunity.",
+    Discount: "10%"
+
   },
   {
     id: 2,
@@ -18,6 +22,7 @@ const ayurvedaProducts = [
     rating: 4.6,
     image: "https://www.dabur.com/Brands/All%20Banner/Triphala-Churna.jpg",
     description: "Supports digestion, detoxification, and improves gut health.",
+    Discount: "15%"
   },
   {
     id: 3,
@@ -26,6 +31,7 @@ const ayurvedaProducts = [
     rating: 4.7,
     image: "https://img.forestessentialsindia.com/pub/media/catalog/product/cache/0ee050c3ffc3555709b9bb6062f4d7e9/8/9/8970_ultra_rich_body_milk_indian_rose_absolute_130ml_front_1.png",
     description: "Keeps your skin soft, hydrated, and glowing naturally.",
+    Discount: "20%"
   },
   {
     id: 4,
@@ -34,6 +40,7 @@ const ayurvedaProducts = [
     rating: 4.8,
     image: "https://himalayawellness.in/cdn/shop/products/Aloe-Vera-Refreshing-Body-Gel-300ml_FOP_1024x1024.jpg?v=1670397702",
     description: "Hydrates skin, soothes irritation, and promotes healing.",
+    Discount: "25%"
   },
   {
     id: 5,
@@ -42,6 +49,7 @@ const ayurvedaProducts = [
     rating: 4.9,
     image: "https://m.media-amazon.com/images/I/71-InZvXzsL._SX522_.jpg",
     description: "Brightens complexion, reduces pigmentation, and adds glow.",
+    Discount: "30%"
   },
   {
     id: 6,
@@ -50,6 +58,7 @@ const ayurvedaProducts = [
     rating: 4.7,
     image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSTCbNZevNwRnJQFjpMq8hmYA36co8to_ML5A&s",
     description: "Rejuvenates skin, controls acne, and gives a cooling effect.",
+    Discount: "35%"
   },
   {
     id: 7,
@@ -58,6 +67,9 @@ const ayurvedaProducts = [
     rating: 4.6,
     image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7agwatOxW2wdInaHu5UxDaOesi3Pxn3zKAw&s",
     description: "Cleanses deeply, fights pimples, and controls oil.",
+    Discount
+: "15%"
+
   },
   {
     id: 8,
@@ -66,24 +78,19 @@ const ayurvedaProducts = [
     rating: 4.8,
     image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2dpE35mxdJ4V4DNwjMzTRjgNKSCXj0aamGg&s",
     description: "Nourishes skin, provides deep hydration, and makes it soft.",
+    Discount: "20%"
   }
 ];
 
 const Card = () => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [likedProducts, setLikedProducts] = useState({});
 
-  const toggleLike = (id) => {
-    setLikedProducts((prev) => ({
-      ...prev,
-      [id]: !prev[id], // अगर true था तो false, false था तो true
-    }));
-  };
 
-  const HandelCart = (e) => {
-    e.stopPropagation(); 
-        console.log(e, "click");
-        
+  const HandelCart = (product) => {
+
+
+    dispatch(addItem(product));
   }
 
   const settings = {
@@ -114,17 +121,17 @@ const Card = () => {
               <h3 className="text-lg font-semibold">{product.name}</h3>
               <h3 className="text-gray-600">{product.description}</h3>
               <p className="text-green-600 font-bold mt-1">₹{product.price}</p>
-             
+
             </div>
             <div className=" px-3 flex justify-between mt-2 absolute bottom-5">
-                <Link to={"/cart"} className="bg-black font-medium text-white px-3 py-1 border-2 rounded hover:bg-white hover:text-black" onClick={HandelCart}>
-                  Add to Cart
-                </Link>
-                
-                <Link to={"/order"} className="bg-black ml-5 font-medium text-white px-6 py-1 border-2 rounded hover:bg-white hover:text-black">
-                  Order
-                </Link>
-              </div>
+              <button className="bg-black font-medium text-white px-3 py-1 border-2 rounded hover:bg-white hover:text-black" onClick={() => { HandelCart(product) }}>
+                Add to Cart
+              </button>
+
+              <Link to={"/order"} className="bg-black ml-5 font-medium text-white px-6 py-1 border-2 rounded hover:bg-white hover:text-black">
+                Order
+              </Link>
+            </div>
           </div>
         ))}
       </Slider>

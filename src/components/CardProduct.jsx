@@ -1,149 +1,170 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { addItem } from "../redux/cartSlice";
 
 const ayurvedaProducts = [
   {
-    id: 1,
+    id: 11,
     name: "Ashwagandha Powder",
     price: 299,
     rating: 4.5,
     image: "https://www.health.com/thmb/HbU1zglGEEvNYhi6vz5E5-hiqs4=/5616x0/filters:no_upscale():max_bytes(150000):strip_icc()/Health-GettyImages-1014748348-4d3ca431c42b4c0da1d628664fa72412.jpg",
-    description: "Boosts immunity, reduces stress, and enhances stamina."
+    description: "Boosts immunity, reduces stress, and enhances stamina.",
+    Discount : "10%"
   },
   {
-    id: 2,
+    id: 22,
     name: "Triphala Churna",
     price: 199,
     rating: 4.3,
     image: "https://vediherbals.com/cdn/shop/articles/Triphala_churna.png?v=1623124525",
-    description: "Aids digestion and detoxifies the body naturally."
+    description: "Aids digestion and detoxifies the body naturally.",
+    Discount : "15%"
   },
   {
-    id: 3,
+    id: 33,
     name: "Brahmi Syrup",
     price: 349,
     rating: 4.7,
     image: "https://t4.ftcdn.net/jpg/04/40/28/11/360_F_440281130_5FffkfeC2gUCNT1YSjC264m6k87ZMXRH.jpg",
-    description: "Improves memory and brain function."
+    description: "Improves memory and brain function.",
+    Discount : "20%"
   },
   {
-    id: 4,
+    id: 44,
     name: "Neem Capsules",
     price: 250,
     rating: 4.4,
     image: "https://vediherbals.com/cdn/shop/files/uy-Neem-Capsule-Natural-Blood-Purifier-Immune-Booster-Antioxidant-Properties_grande.jpg?v=1718607393",
-    description: "Purifies blood and promotes healthy skin."
+    description: "Purifies blood and promotes healthy skin.",
+    Discount : "25%"
   },
   {
-    id: 5,
+    id: 55,
     name: "Giloy Juice",
     price: 220,
     rating: 4.6,
     image: "https://c.ndtvimg.com/2023-07/1i6lv4o_giloy-juice_625x300_19_July_23.jpg?im=FeatureCrop,algorithm=dnn,width=545,height=307",
-    description: "Enhances immunity and fights infections."
+    description: "Enhances immunity and fights infections.",
+    Discount : "30%"
   },
   {
-    id: 6,
+    id: 66,
     name: "Aloe Vera Gel",
     price: 180,
     rating: 4.2,
     image: "https://images.mamaearth.in/catalog/product/a/l/aloevera-gel-moisturizer-1.jpg?format=auto&height=600",
-    description: "Moisturizes skin and soothes irritation."
+    description: "Moisturizes skin and soothes irritation.",
+    Discount : "35%"
+
   },
   {
-    id: 7,
+    id: 77,
     name: "Chyawanprash",
     price: 399,
     rating: 4.8,
     image: "https://static.toiimg.com/photo/88948827.cms",
-    description: "A rich source of vitamin C for immunity."
+    description: "A rich source of vitamin C for immunity.",
+    Discount : "30%"
   },
   {
-    id: 8,
+    id: 88,
     name: "Moringa Powder",
     price: 289,
     rating: 4.3,
     image: "https://5.imimg.com/data5/FO/SW/MY-393323/organic-moringa-powder.jpg",
-    description: "Rich in antioxidants and vitamins."
+    description: "Rich in antioxidants and vitamins.",
+    Discount : "25%"
   },
   {
-    id: 9,
+    id: 99,
     name: "Kumkumadi Tailam",
     price: 450,
     rating: 4.9,
     image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSLVktyJcc1rTfVZCBA0fDDx9rOU3J9SajTLQ&s",
-    description: "A luxurious Ayurvedic facial oil for glowing skin."
+    description: "A luxurious Ayurvedic facial oil for glowing skin.",
+    Discount : "20%"
   },
   {
-    id: 10,
+    id: 110,
     name: "Saffron Herbal Tea",
     price: 320,
     rating: 4.5,
     image: "https://img.freepik.com/premium-photo/saffron-tea-with-candy-saffron-herbal-tea_908985-108183.jpg",
-    description: "Boosts metabolism and improves mood."
+    description: "Boosts metabolism and improves mood.",
+    Discount : "15%"
   },
   {
-    id: 11,
+    id: 111,
     name: "Shilajit Resin",
     price: 799,
     rating: 4.8,
     image: "https://www.smallflower.com/cdn/shop/files/black-lotus-shilajit-pure-shilajit-resin-7-g.png?v=1713813490&width=1946",
-    description: "Enhances strength and energy levels."
+    description: "Enhances strength and energy levels.",
+    Discount : "10%"
   },
   {
-    id: 12,
+    id: 212,
     name: "Amla Powder",
     price: 199,
     rating: 4.3,
     image: "https://traya.health/cdn/shop/articles/Title_Blog_banners_18.jpg?v=1674653560",
-    description: "Rich in vitamin C for better hair and skin health."
+    description: "Rich in vitamin C for better hair and skin health.",
+    Discount : "5%"
   },
   {
-    id: 13,
+    id: 513,
     name: "Tulsi Drops",
     price: 150,
     rating: 4.6,
     image: "https://jamnaherbal.com/cdn/shop/articles/BQ3.jpg?v=1720087003",
-    description: "Supports respiratory health and immunity."
+    description: "Supports respiratory health and immunity.",
+    Discount : "10%"
   },
   {
-    id: 14,
+    id: 714,
     name: "Herbal Hair Oil",
     price: 349,
     rating: 4.7,
     image: "https://indalo.in/cdn/shop/products/Indalo11in1HerbalHairOil.png?v=1717845875&width=1000",
-    description: "Prevents hair fall and promotes hair growth."
+    description: "Prevents hair fall and promotes hair growth.",
+    Discount : "15%"
   },
   {
-    id: 15,
+    id: 195,
     name: "Ayurvedic Pain Balm",
     price: 225,
     rating: 4.5,
     image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-_ODm6hNnVOzKrZa0hJsDwmxJZwzmWHXAcg&s",
-    description: "Relieves joint and muscle pain naturally."
+    description: "Relieves joint and muscle pain naturally.",
+    Discount : "20%"
   },
   {
-    id: 16,
+    id: 156,
     name: "Organic Turmeric Powder",
     price: 170,
     rating: 4.8,
     image: "https://www.greendna.in/cdn/shop/products/turmeric-1-1030x687_1030x.jpg?v=1562518343",
-    description: "Powerful anti-inflammatory and antioxidant properties."
+    description: "Powerful anti-inflammatory and antioxidant properties.",
+    Discount : "25%"
   },
   {
-    id: 17,
+    id: 177,
     name: "Ayurvedic Detox Tea",
     price: 299,
     rating: 4.5,
     image: "https://www.itoozhiayurveda.in/wp-content/uploads/2023/04/tea-cup-with-mint-dried-herbs-lemon-sugar-cubes-high-angle-view-blue-surface-scaled.jpg",
-    description: "Cleanses the body and supports digestion."
+    description: "Cleanses the body and supports digestion.",
+    Discount : "30%"
   },
   {
-    id: 18,
+    id: 1548,
     name: "Ayurvedic Face Pack",
     price: 250,
     rating: 4.6,
     image: "https://c.ndtvimg.com/2018-12/o24sqf0g_face-wash-650_625x300_11_December_18.jpg?downsize=545:307",
-    description: "Brightens skin and removes blemishes."
+    description: "Brightens skin and removes blemishes.",
+    Discount : "35%"
   },
   {
     id: 19,
@@ -151,7 +172,8 @@ const ayurvedaProducts = [
     price: 399,
     rating: 4.7,
     image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDm5ZBsuST7P8lw9r_PQiUEE0A0Phws3PcVA&s",
-    description: "Great for aromatherapy and stress relief."
+    description: "Great for aromatherapy and stress relief.",
+    Discount : "33%"
   },
   {
     id: 20,
@@ -159,11 +181,17 @@ const ayurvedaProducts = [
     price: 280,
     rating: 4.4,
     image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRToStYsw1CK6TgJZ7LCAadbcO6nMWXIgQ-Jw&s",
-    description: "Deeply nourishes and hydrates skin."
+    description: "Deeply nourishes and hydrates skin.",
+    Discount : "40%"
   } 
 ];
 
 const CardProducts = () => {
+  const dispatch = useDispatch();
+   const HandelCart = (product) => {
+  
+      dispatch(addItem(product));
+    }
   return (
     <div className="min-h-screen bg-gray-100 px-6 py-10 flex gap-6 mt-20 w-full">
     {/* Sidebar */}
@@ -197,9 +225,11 @@ const CardProducts = () => {
         <div key={product.id} className="bg-white shadow-lg rounded-lg p-4 hover:shadow-2xl transition">
           <img src={product.image} alt={product.name} className="w-full h-40 object-cover rounded-md shadow-md" />
           <h2 className="text-lg font-semibold mt-3">{product.name}</h2>
+          <p className="text-gray-600">{product.rating} ★</p>
           <p className="text-gray-500 text-sm">{product.description}</p>
           <p className="text-green-600 font-bold mt-1">₹{product.price}</p>
-          <button className="mt-3 w-full bg-black text-white border-2 py-2 rounded-lg hover:bg-white hover:text-black hover:border-black transition">
+          <p className="text-red-600 font-bold mt-1">Discount : {product.Discount}</p>
+          <button className="mt-3 w-full bg-black text-white border-2 py-2 rounded-lg hover:bg-white hover:text-black hover:border-black transition" onClick={()=>{HandelCart(product)}}>
             Add to Cart
           </button>
         </div>

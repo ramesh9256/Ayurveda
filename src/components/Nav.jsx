@@ -5,12 +5,14 @@ import { signOut, onAuthStateChanged } from "firebase/auth";
 import { auth } from "../Firebase/firebaseConfig";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css"; // Import styles
+import { useSelector } from "react-redux";
 
 const Nav = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [user, setUser] = useState(null);
   const [cartCount, setCartCount] = useState(0);
   const navigate = useNavigate();
+  const cartData = useSelector((store) => store.cart.items)
 
   // Check localStorage for cart items
   useEffect(() => {
@@ -75,7 +77,7 @@ const Nav = () => {
           )}
 
           <Link to="/cart" className="text-green-700 hover:text-green-900 font-medium transition duration-300">
-            Cart ({cartCount})
+            Cart ({cartData.length})
           </Link>
         </div>
 
@@ -162,7 +164,7 @@ const Nav = () => {
               onClick={handleLinkClick}
               className="text-green-700 hover:text-green-900 block py-2 transition duration-300"
             >
-              Cart ({cartCount})
+              Cart ({cartData.length})
             </Link>
           </li>
         </ul>

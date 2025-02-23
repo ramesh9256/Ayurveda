@@ -13,6 +13,7 @@ import Top from "./components/Top";
 import SignUp from "./components/SignUp";
 import AddToCart from "./components/AddToCart";
 import Order from "./components/Order";
+import CartPage from "./components/CartPage";
 
 
 
@@ -32,11 +33,9 @@ const App = () => {
         <Route path="/review" element={<ReadMore />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/cart" element={<AddToCart />} />
+        <Route path="/cart" element={<CartPage />} />
         <Route path="/order" element={<Order />} />
         <Route path="/confirm" element={<Body />} />
-
-
       </Routes>
       <Footer />
     </Router>

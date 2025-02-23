@@ -5,6 +5,7 @@ import AyurvedaCards from './Card'
 import FilterClick from './FilterClick'
 import ReadCard from './ReadCard'
 import OurStory from './OurStory'
+import ReviewPage from './ReviewPage'
 
 const Body = () => {
   return (
@@ -14,6 +15,7 @@ const Body = () => {
       <AyurvedaCards/>
       <ReadCard/>
       <OurStory/>
+      <ReviewPage/>
     </div>
   )
 }

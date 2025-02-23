@@ -55,7 +55,6 @@ const FilterClick = () => {
             <div
               className="relative h-44 md:h-52 flex items-center justify-center bg-cover rounded-lg shadow-lg cursor-pointer transition-transform transform hover:scale-105"
               style={{ backgroundImage: `url(${item.img})` }}
-              onClick={() => navigate(`/product/${item.id}`)}
             >
               {/* Dark overlay for better readability */}
               <div className="absolute inset-0 bg-opacity-40 rounded-lg"></div>
